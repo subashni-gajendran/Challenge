@@ -1,0 +1,253 @@
+/*global*/
+$font-stack:    Arial, Helvetica, sans-serif;
+$primary-color:  #2980b9;
+$white-color: #ffffff;
+$font-size: 14px;
+$font-size-heading: $font-size + 4;
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+    font: 15px/1.5 $font-stack;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+.container {
+    width: 60%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.row {
+    clear: both;
+}
+
+.floatRight{
+    float: right;
+}
+.column {
+    float: left;
+    text-align: left;
+}
+
+.column-5 {
+    width: 18%;
+    padding-left:0.5%;
+    padding-right:0.5%;
+}
+
+.image {
+    border: 1px solid #ddd;
+    @include border-radius(4px);
+    padding: 5px;
+    
+}
+
+.smallimagewxh{
+   max-width: 50px;
+    height: auto; 
+}
+.largeimagewxh{
+   max-width: 50%;
+   height: auto; 
+}
+
+.image:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+/*header*/
+
+header {
+    background-color: $primary-color;
+    color: $white-color;
+    padding-top: 20px;
+    min-height: 30px;
+}
+
+.main-content {
+    .cls {
+        clear: both;
+    }
+    
+    .list-header {
+        font-weight: bold;
+        font-size: $font-size-heading;
+    }
+    .list-content {
+       padding-top:10px; 
+     }
+   
+    .visible-small{
+        display: none;
+    }
+}
+
+.boldtxt{
+    font-weight:bold;
+}
+
+.alignCenter{
+    text-align:center;
+}
+.nextStep{
+    height:25%;
+}
+
+%message-shared {
+  border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: $font-size;
+}
+
+ .btn,.btn:hover,.button:active {
+    background-color: $primary-color; 
+    color: $white-color;
+    @extend %message-shared;
+    @include border-radius(8px); 
+    cursor: pointer;
+   }
+    
+.btn:disabled,
+.btn[disabled]{
+  background-color: #cccccc;
+  color: #666666;
+  @extend %message-shared;
+  @include border-radius(8px); 
+    
+}
+
+   .footer{
+    p{
+        text-align:center;
+        width:100%;
+    }
+   }
+    
+/* fExtra small devices (phones, 480px and down) */
+
+@media only screen and (max-width: 480px) {
+    .container {
+        width: 80%;
+        padding-left: 10px;
+        padding-right: 10px; 
+        font-size: $font-size;
+    }
+
+    .column-5 {
+        width: 18%;
+        font-size: 14px;
+    }
+   .main-content {
+
+    .list-header.imageShow {
+        display: none;
+    }
+   
+    .list-content {
+       padding-top: 5px;
+     }
+   
+    .visible-small{
+        display: block;
+        font-weight: bold;
+       }
+  }  
+
+  .smallimagewxh{
+   max-width: 30px;
+    height: auto; 
+}
+.largeimagewxh{
+   max-width: 20%;
+   height: auto; 
+}
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (max-width: 600px) {}
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (max-width: 768px) {
+
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (max-width: 900px) {}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+
+@media only screen and (min-width: 1200px) {}
+
+
+@media(max-width: 768px) {
+
+    header {
+        padding-bottom: 20px;
+    }
+}
+
+
+/* MODAL STYLES
+-------------------------------*/
+
+.modalcustom-modal-1 {
+    /* modals are hidden by default */
+    display: none;
+    .modal {
+        /* modal container fixed across whole screen */
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        /* z-index must be higher than .modal-background */
+        z-index: 1000;
+
+        /* enables scrolling for tall modals */
+        overflow: auto;
+        .modal-body {
+            padding: 20px;
+            background: #fff;
+            /* margin exposes part of the modal background */
+            margin: 40px;
+        }
+    }
+    .modal-background {
+        /* modal background fixed across whole screen */
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0.3;
+        left: 0;
+        /* semi-transparent black  */
+        background-color: #000;
+        opacity: 0.75;
+        /* z-index must be below .modal and above everything else  */
+        z-index: 900;
+    }
+}
+
+body.modal-open {
+    /* body overflow is hidden to hide main scrollbar when modal window is open */
+    overflow: hidden;
+}

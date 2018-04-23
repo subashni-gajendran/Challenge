@@ -1,0 +1,51 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+  <div class="row">
+      <table class="table">
+          <thead class="thead-inverse">
+          <tr>
+              <th class="text-center">ID</th>
+              <th class="text-center">Select an offer</th>
+              <th class="text-center">Name</th>
+              <th class="text-center">Tag</th>
+              <th class="text-center">Brand</th>
+              <th class="text-center">info</th>
+          </tr>
+          </thead>
+          <tbody>
+            <form>
+              <ng-container *ngFor="let post of _postsArray;">
+          <tr>
+              <td class="text-center" style="width: 15px;">{{post.id}}</td>
+              <td class="text-center" style="width: 15px;"> <input type='checkbox' name="product_{{post.id}}" id="{{post.id}}" value="{{post.id}}"  (change)="onCheckboxChange($event)">  </td>
+              <td class="text-center" style="width: 15px;">{{post.name}}</td>
+              <td class="text-center">{{post.description}}</td>
+              <td class="text-center">{{post.tag}}</td>
+              <td class="text-center">{{post.brand}} <br>
+                {{post.image}} <br>
+                {{post.logo}}</td>
+             <td class="text-center" style="width: 15px;">
+               
+               
+               <button (click)="showDialog = !showDialog" class="btn">info</button>
+               
+               <app-dialog [(visible)]="showDialog"  id="info_{{post.id}}" >
+                 <h1>{{post.name}}</h1>
+                 <p>{{post.description}}</p>
+                 <button (click)="showDialog = !showDialog" class="btn">Close</button>
+               </app-dialog>
+               
+              </td>
+          </tr>
+        </ng-container>
+          <tr><td>
+              <ng-container *ngIf="countNumber >= 5; then first else second "></ng-container>
+              <ng-template #first><input type="submit" name="counterButton" id="counterButton" value="submit" ></ng-template>
+              <ng-template #second><input type="submit" name="counterButton" id="counterButton" value="submit" disabled></ng-template>
+          </td></tr>
+          </form>
+          </tbody>
+      </table>
+  </div>
+</div>
+

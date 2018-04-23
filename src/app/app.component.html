@@ -1,0 +1,86 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<header>
+    <div class="container">
+        <h2>Select 5 of the 10 presented offers. When 5 offers are selected, the counter button on the bottom becomes active and you can move on to the next step</h2>
+    </div>
+</header>
+<!-- /header -->
+<div class="container">
+   <form>
+    <section class="main-content">
+       <div class="list-header">
+            <h4 class="column column-5">Select an offer</h4>
+            <h4 class="column column-5">Name</h4>
+            <h4 class="column column-5">Tag</h4>
+            <h4 class="column column-5">Brand</h4>
+            <h4 class="column column-5">Info</h4>
+        </div>
+        <div class="cls"></div>
+        <div class="cls" >
+            <ng-container *ngFor="let post of _postsArray;">
+                <div class="cls list-content">
+                    <div class="column column-5">
+                        <div class="imageShow">
+                          <img src="{{post.image}}" class="image smallimagewxh" alt="{{post.name}}">
+                        <br>
+
+                        </div>
+                        
+                       <input type='checkbox' name="product_{{post.id}}" id="{{post.id}}" value="{{post.id}}" (change)="onCheckboxChange($event)" alt="Select an offer" title="Select an offer">Select an offer
+                    </div>
+                    <div class="column column-5">
+                    <span class="visible-small">Name:</span>
+                    {{post.name}}</div>
+                    
+                    <div class="column column-5">
+                    <span class="visible-small">Tag:</span>
+                    {{post.tag}}</div>
+                    <div class="column column-5">
+                    <span class="visible-small">Brand:</span>
+                    {{post.brand}}</div>
+                    <div class="column column-5">
+                       <button (click)="openDialog(post);" class="btn" title="Info" >Info</button>       
+                       
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </section>
+    <section>
+        <div class="row alignCenter">
+            <ng-container *ngIf="countNumber >= 5; then first else second "></ng-container>
+            <ng-template #first>
+                <input type="submit" name="counterButton" class="btn" id="counterButton" value="Next Step" title="Next Step">
+            </ng-template>
+            <ng-template #second>
+                <input type="submit" name="counterButton"  id="counterButton" value="Next Step" class="btn"  disabled>
+            </ng-template>
+        </div>
+        </section>
+       </form> 
+</div>
+<app-dialog [(visible)]="showDialog">
+  <div class="column">
+    <img src="{{productImage}}" alt="{{title}}" class="image largeimagewxh">
+  </div>
+  <div class="column"> 
+   <h1>
+    <span class="boldtxt">Title:</span> {{title}}
+  </h1>
+   <p>
+    <span class="boldtxt">Brand:</span> {{brand}}
+   </p>
+   <p>
+    <span class="boldtxt">Tag:</span> {{tag}}
+   </p>
+   <p>
+    <span class="boldtxt">Description:</span>{{details}}</p>
+   </div> 
+   <div class="floatRight">
+      <button (click)="showDialog = !showDialog" class="btn" title="Close">Close</button>
+  </div>
+</app-dialog>
+<footer class="footer">
+    <p>Company &copy; 2018</p>
+</footer>
+ 
