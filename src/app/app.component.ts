@@ -1,7 +1,7 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, Inject} from "@angular/core";
  import {ApiService} from "./app.service";
  import {IProducts} from "./products";
-
+import { DOCUMENT } from '@angular/platform-browser';
  
  @Component({
     moduleId: module.id.toString(),
@@ -21,7 +21,7 @@ import {Component, OnInit} from "@angular/core";
      productImage: string; 
      submitUrl: string;
 
-        constructor(private apiSerivce: ApiService) {
+        constructor(private apiSerivce: ApiService,@Inject(DOCUMENT) private document: any) {
      }
  
      getPosts(): void {
@@ -54,6 +54,8 @@ import {Component, OnInit} from "@angular/core";
      console.log("Form Submitted!");
      }
 
-
+     goToUrl(): void {
+    this.document.location.href = 'https://sampler.io/';
+}
  }
 
