@@ -48,9 +48,9 @@
     </section>
     <section>
         <div class="row alignCenter">
-            <ng-container *ngIf="countNumber >= 5; then first else second "></ng-container>
+            <ng-container *ngIf="countNumber >= 1; then first else second "></ng-container>
             <ng-template #first>
-                <input type="submit" name="counterButton" class="btn" id="counterButton" value="Next Step" title="Next Step">
+                <input type="submit" name="counterButton" class="btn" id="counterButton" value="Next Step" title="Next Step" (click)="goToUrl()">
             </ng-template>
             <ng-template #second>
                 <input type="submit" name="counterButton"  id="counterButton" value="Next Step" class="btn"  disabled>
